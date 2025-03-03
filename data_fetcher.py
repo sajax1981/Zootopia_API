@@ -21,5 +21,5 @@ def fetch_data(animal_name: str) -> List[Dict]:
     except requests.exceptions.RequestException as err:
         print(f"Error occurred: {err}")
 
-    return []  # Return an empty list in case of an error
+    return []
 
