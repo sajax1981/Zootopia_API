@@ -1,8 +1,11 @@
 import requests
 from typing import List, Dict
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
-API_KEY = "hSiV4NgjXtCduOrVXIM1fQ==Xt58CDbBVUcp0I20"
+API_KEY = os.getenv('API_KEY')
 URL = "https://api.api-ninjas.com/v1/animals?name={}"
 
 
