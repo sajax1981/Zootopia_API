@@ -2,18 +2,27 @@ import requests
 from typing import List, Dict
 
 
+API_KEY = "hSiV4NgjXtCduOrVXIM1fQ==Xt58CDbBVUcp0I20"
+URL = "https://api.api-ninjas.com/v1/animals?name={}"
+
+
 def fetch_data(animal_name: str) -> List[Dict]:
+    """
+    Fetches the animal data for the given 'animal_name'.
 
-    url = f"https://api.api-ninjas.com/v1/animals?name={animal_name}"
-    api_key = "hSiV4NgjXtCduOrVXIM1fQ==Xt58CDbBVUcp0I20"
+    Args:
+    - animal_name: The name of the animal to fetch data for.
 
-    headers = {"X-Api-Key": api_key}
+    Returns:
+    - A list of dictionaries, each containing details about an animal.
+    """
+    headers = {"X-Api-Key": API_KEY}
 
     try:
-        response = requests.get(url, headers=headers)
-        response.raise_for_status()  # Raise exception for HTTP errors
+        response = requests.get(URL.format(animal_name), headers=headers)
+        response.raise_for_status()
 
-        # Return the animal data as a list of dictionaries
+
         return response.json()
 
     except requests.exceptions.HTTPError as http_err:
