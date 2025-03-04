@@ -1,15 +1,11 @@
 import requests
-from typing import List, Dict
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv('API_KEY')
-URL = "https://api.api-ninjas.com/v1/animals?name={}"
 
-
-def fetch_data(animal_name: str) -> List[Dict]:
+def fetch_data(animal_name):
     """
     Fetches the animal data for the given 'animal_name'.
 
@@ -19,19 +15,15 @@ def fetch_data(animal_name: str) -> List[Dict]:
     Returns:
     - A list of dictionaries, each containing details about an animal.
     """
-    headers = {"X-Api-Key": API_KEY}
+    api_key = os.getenv('API_KEY')
+    api_url = f"https://api.api-ninjas.com/v1/animals?name={animal_name}"
+    headers = {"X-Api-Key": api_key}
 
-    try:
-        response = requests.get(URL.format(animal_name), headers=headers)
-        response.raise_for_status()
+    response = requests.get(api_url, headers=headers)
 
-
-        return response.json()
-
-    except requests.exceptions.HTTPError as http_err:
-        print(f"HTTP error occurred: {http_err}")
-    except requests.exceptions.RequestException as err:
-        print(f"Error occurred: {err}")
-
-    return []
+    if response.status_code == 200:
+        return response.json()  # Returns a list of animal objects
+    else:
+        print(f"Error fetching data: {response.status_code} - {response.text}")
+        return []
 
