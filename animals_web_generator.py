@@ -1,7 +1,7 @@
 import data_fetcher
 
 def serialize_animal(animal_obj):
-    """Serializes a single animal object into HTML."""
+    """Serializes a single animal object into html"""
     output = f"""
     <li class="cards__item">
         <div class="card__title">{animal_obj['name']}</div>
@@ -16,7 +16,7 @@ def serialize_animal(animal_obj):
 
 
 def generate_error_message(animal_name):
-    """Generates an HTML error message for non-existent animals."""
+    """Generates an html error message for non-existent animals"""
     output = f"""
     <div class="error-message">
         <h2>The animal "{animal_name}" doesn’t exist.</h2>
@@ -28,8 +28,8 @@ def generate_error_message(animal_name):
 
 
 def generate_html_content(animals, animal_name):
-    """Generates the complete HTML string, with error message if no animals found."""
-    if not animals:  # Check if the list is empty
+    """Generates the complete HTML string, with error message if no animals found"""
+    if not animals:
         return generate_error_message(animal_name)
 
     html_list = ""
@@ -39,9 +39,7 @@ def generate_html_content(animals, animal_name):
 
 
 def main():
-    """Fetches data from API based on user input, generates HTML, and writes to a file."""
-
-    # Prompt user for animal name
+    """Fetches data from API based on user input, generates HTML, and writes to a file"""
     animal_name = input("Enter a name of an animal: ")
     # Fetch data from the API
     animals_data = data_fetcher.fetch_data(animal_name)

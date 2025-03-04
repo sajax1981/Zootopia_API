@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 def fetch_data(animal_name):
     """
     Fetches the animal data for the given 'animal_name'.
