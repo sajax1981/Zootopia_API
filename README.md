@@ -1,6 +1,6 @@
 # My Awesome Project Zootopia API
 
-This project does amazing things and solves all your problems!
+This project does amazing things and solves all your problems! go find your Favorite Animal
 
 ## Installation
 
